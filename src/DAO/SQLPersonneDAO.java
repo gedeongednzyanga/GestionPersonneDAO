@@ -18,12 +18,12 @@ public class SQLPersonneDAO extends DAO<Personne> {
     @Override
     public int Nouveau() {
         int id = 0;
-        String requete = "SELECT MAX(id) as lastId FROM personne";
+        String requete = "SELECT ISNULL((MAX(id)),0) as lastId FROM personne";
         try{
             PreparedStatement ps = this.connect.prepareStatement(requete);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                if (Integer.parseInt(rs.getString("lastId")) != 0 && Integer.parseInt(rs.getString("lastId"))< 0)
+                if (Integer.parseInt(rs.getString("lastId")) < 1)
                     id = 1;
                 else
                     id = Integer.parseInt(rs.getString("lastId")) + 1;

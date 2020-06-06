@@ -19,7 +19,7 @@ public class SQLTelephoneDAO extends DAO<Telephone> {
     public int Nouveau() {
         int id = 0;
         PreparedStatement ps;
-        String requete = "SELECT MAX(id) as lastId FROM telephone";
+        String requete = "SELECT ISNULL((MAX(id)),0) as lastId FROM telephone";
         try{
             ps = this.connect.prepareStatement(requete);
             ResultSet rs = ps.executeQuery();

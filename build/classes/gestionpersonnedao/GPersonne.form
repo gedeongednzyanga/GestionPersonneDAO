@@ -208,6 +208,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="textIdPersonne">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="textNom">
             </Component>
@@ -333,6 +336,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="textIdPhone">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="textNumero">
             </Component>

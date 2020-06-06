@@ -82,6 +82,7 @@ public class GPersonne extends javax.swing.JFrame {
             telephoneDAO.Supprimer(t);
         }
         loadTelephone();
+        initialiserTelephone();
     }
     
     void loadPersonne(){
@@ -190,6 +191,8 @@ public class GPersonne extends javax.swing.JFrame {
 
         jLabel5.setText("Sexe");
 
+        textIdPersonne.setEditable(false);
+
         combSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculin", "Féminin" }));
 
         jButton1.setText("Nouveau");
@@ -282,6 +285,8 @@ public class GPersonne extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Téléphone"));
 
         jLabel6.setText("Numéro");
+
+        textIdPhone.setEditable(false);
 
         jLabel7.setText("Initial");
 
@@ -451,7 +456,12 @@ public class GPersonne extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SavePersonne(true);
+        if(textIdPersonne.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Cliquez sur Nouveau puis Enregitrer");
+        }else if(textNom.getText().equals("") || textPostnom.getText().equals("") || textPrenom.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Complètez tous les champs svp !!!");
+        }else 
+            SavePersonne(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -461,7 +471,14 @@ public class GPersonne extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        SaveTelephone(true);
+        if(textIdPersonne.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Sélectionnez une personne d'abord.");
+        }else if(textIdPhone.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Cliquez sur Nouveau puis Enregitrer");
+        }else if(textInitial.getText().equals("") || textNumero.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Veillez préciser l'initial ou le numéro de téléphone:");
+        }else 
+            SaveTelephone(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void tableTelephoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTelephoneMouseClicked
